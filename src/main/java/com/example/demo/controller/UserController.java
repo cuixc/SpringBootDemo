@@ -20,6 +20,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.example.demo.VO.UserVo;
 import com.example.demo.dao.UserDao;
 import com.example.demo.entity.User;
+import com.example.demo.redis.RedisService;
 import com.example.demo.service.UserService;
 
 import io.swagger.annotations.ApiOperation;
@@ -31,7 +32,8 @@ public class UserController {
 	private static final Logger log = Logger.getLogger(UserController.class);// 日志文件
 	@Autowired
 	private UserService userService;
-	
+	@Autowired
+    private RedisService redisService;
 	@ApiOperation(value="保存用户")
 	@RequestMapping(value = "save.do",method=RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> insert(UserVo userVo) {
@@ -43,6 +45,7 @@ public class UserController {
 		log.info(user.toString());
 		boolean result = userService.insert(user);
 		map.put("添加结果", result);
+		redisService.set("usersave"+user.getId(), user);
 		return ResponseEntity.ok(map);
 	}
 	@RequestMapping(value = "findAll.do",method=RequestMethod.POST)
@@ -50,10 +53,10 @@ public class UserController {
 	public List<User> findAll() {
 		return userService.findAll();
 	}
-	@RequestMapping(value = "findSelect.do",method=RequestMethod.POST)
+	@RequestMapping(value = "findRedis.do",method=RequestMethod.POST)
 	@ResponseBody
-	public List<User> findSelect() {
-		return userService.selectList(null);
+	public List<User> findRedis() {
+		return (List<User>) redisService.get("usersave");
 	}
 	
 	@RequestMapping(value = "findByUser.do",method=RequestMethod.POST)
