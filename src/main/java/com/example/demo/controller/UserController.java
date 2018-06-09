@@ -59,6 +59,7 @@ public class UserController {
 		return (List<User>) redisService.get("usersave");
 	}
 	
+	
 	@RequestMapping(value = "findByUser.do",method=RequestMethod.POST)
 	@ResponseBody
 	public List<User> findByUser(UserVo userVo) {
