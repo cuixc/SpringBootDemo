@@ -1,4 +1,4 @@
-package com.example.demo.VO;
+package com.example.demo.DTO;
 
 import java.io.Serializable;
 

@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,8 +8,13 @@ import java.util.Date;
  * @author cuixc
  *
  */
-public class ProductCategory {
-	 private Long categoryId;
+public class ProductCategory implements Serializable{
+	 /**  
+	* @Fields field:field:{todo}(用一句话描述这个变量表示什么)  
+	*/ 
+	private static final long serialVersionUID = 6518112749224400938L;
+
+	private Long id;
 
     /** 类目名字. */
     private String categoryName;
@@ -16,16 +22,19 @@ public class ProductCategory {
     /** 类目编号. */
     private Integer categoryType;
 
-    public Date createTime;
+    private Date createTime;
 
-    public Date updateTime;
+    private Date updateTime;
 
-	public Long getCategoryId() {
-		return categoryId;
+    private String sellerId;
+	
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setCategoryId(Long categoryId) {
-		this.categoryId = categoryId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getCategoryName() {
@@ -60,11 +69,21 @@ public class ProductCategory {
 		this.updateTime = updateTime;
 	}
 
+	public String getSellerId() {
+		return sellerId;
+	}
+
+	public void setSellerId(String sellerId) {
+		this.sellerId = sellerId;
+	}
+
 	@Override
 	public String toString() {
-		return "ProductCategory [categoryId=" + categoryId + ", categoryName=" + categoryName + ", categoryType="
-				+ categoryType + ", createTime=" + createTime + ", updateTime=" + updateTime + "]";
+		return "ProductCategory [id=" + id + ", categoryName=" + categoryName + ", categoryType="
+				+ categoryType + ", createTime=" + createTime + ", updateTime=" + updateTime + ", sellerId=" + sellerId
+				+ "]";
 	}
-    
+
+	
     
 }

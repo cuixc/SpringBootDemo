@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.example.demo.VO.UserVo;
+import com.example.demo.DTO.UserVo;
 import com.example.demo.dao.UserDao;
 import com.example.demo.entity.User;
 import com.example.demo.redis.RedisService;
@@ -58,7 +58,6 @@ public class UserController {
 	public List<User> findRedis() {
 		return (List<User>) redisService.get("usersave");
 	}
-	
 	
 	@RequestMapping(value = "findByUser.do",method=RequestMethod.POST)
 	@ResponseBody

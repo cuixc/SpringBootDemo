@@ -1,29 +1,14 @@
-[2018-06-09 22:17:28.849] - 16856 信息 [main] --- org.apache.catalina.core.StandardService: Starting service [Tomcat]
-[2018-06-09 22:17:28.858] - 16856 信息 [main] --- org.apache.catalina.core.StandardEngine: Starting Servlet Engine: Apache Tomcat/8.5.31
-[2018-06-09 22:17:28.886] - 16856 信息 [localhost-startStop-1] --- org.apache.catalina.core.AprLifecycleListener: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jre1.8.0_111\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_111/bin/server;C:/Program Files/Java/jre1.8.0_111/bin;C:/Program Files/Java/jre1.8.0_111/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.8.0_111\bin;C:\Program Files\Java\jdk1.8.0_111\jre\bin;D:\axis2-1.7.5\bin ?;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\VSShell\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\;D:\maven\apache-maven-3.2.1\bin;C:\Program Files\MySql\bin;;C:\WINDOWS\System32\OpenSSH\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;E:\Spring相关软件\spring-tool-suite-3.9.0.RELEASE-e4.7.0-win32-x86_64\sts-bundle\sts-3.9.0.RELEASE;;.]
-[2018-06-09 22:17:29.122] - 16856 信息 [localhost-startStop-1] --- org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]: Initializing Spring embedded WebApplicationContext
-[2018-06-09 22:17:56.706] - 16856 信息 [http-nio-8080-exec-1] --- org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]: Initializing Spring FrameworkServlet 'dispatcherServlet'
-[2018-06-09 22:18:26.701] - 16856 严重 [http-nio-8080-exec-1] --- org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.data.redis.RedisConnectionFailureException: java.net.SocketException: Connection reset; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: java.net.SocketException: Connection reset] with root cause
-java.net.SocketException: Connection reset
-	at java.net.SocketInputStream.read(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at redis.clients.util.RedisInputStream.ensureFill(RedisInputStream.java:196)
-	at redis.clients.util.RedisInputStream.readByte(RedisInputStream.java:40)
-	at redis.clients.jedis.Protocol.process(Protocol.java:151)
-	at redis.clients.jedis.Protocol.read(Protocol.java:215)
-	at redis.clients.jedis.Connection.readProtocolWithCheckingBroken(Connection.java:340)
-	at redis.clients.jedis.Connection.getStatusCodeReply(Connection.java:239)
-	at redis.clients.jedis.BinaryJedis.set(BinaryJedis.java:211)
-	at org.springframework.data.redis.connection.jedis.JedisStringCommands.set(JedisStringCommands.java:137)
-	at org.springframework.data.redis.connection.DefaultedRedisConnection.set(DefaultedRedisConnection.java:231)
-	at org.springframework.data.redis.core.DefaultValueOperations$3.inRedis(DefaultValueOperations.java:202)
-	at org.springframework.data.redis.core.AbstractOperations$ValueDeserializingRedisCallback.doInRedis(AbstractOperations.java:59)
-	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:224)
-	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:184)
-	at org.springframework.data.redis.core.AbstractOperations.execute(AbstractOperations.java:95)
-	at org.springframework.data.redis.core.DefaultValueOperations.set(DefaultValueOperations.java:198)
-	at com.example.demo.redis.imp.RedisServiceImpl.put(RedisServiceImpl.java:19)
+[2018-06-09 22:58:39.996] - 19432 信息 [main] --- org.apache.catalina.core.StandardService: Starting service [Tomcat]
+[2018-06-09 22:58:40.005] - 19432 信息 [main] --- org.apache.catalina.core.StandardEngine: Starting Servlet Engine: Apache Tomcat/8.5.31
+[2018-06-09 22:58:40.039] - 19432 信息 [localhost-startStop-1] --- org.apache.catalina.core.AprLifecycleListener: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jre1.8.0_111\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_111/bin/server;C:/Program Files/Java/jre1.8.0_111/bin;C:/Program Files/Java/jre1.8.0_111/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.8.0_111\bin;C:\Program Files\Java\jdk1.8.0_111\jre\bin;D:\axis2-1.7.5\bin ?;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\VSShell\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\;D:\maven\apache-maven-3.2.1\bin;C:\Program Files\MySql\bin;;C:\WINDOWS\System32\OpenSSH\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;E:\Spring相关软件\spring-tool-suite-3.9.0.RELEASE-e4.7.0-win32-x86_64\sts-bundle\sts-3.9.0.RELEASE;;.]
+[2018-06-09 22:58:40.347] - 19432 信息 [localhost-startStop-1] --- org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]: Initializing Spring embedded WebApplicationContext
+[2018-06-09 22:58:57.796] - 19432 信息 [http-nio-8080-exec-1] --- org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]: Initializing Spring FrameworkServlet 'dispatcherServlet'
+[2018-06-09 22:59:12.770] - 19432 严重 [http-nio-8080-exec-1] --- org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Handler dispatch failed; nested exception is java.lang.Error: Unresolved compilation problem: 
+	The method put(String, User) is undefined for the type RedisService
+] with root cause
+java.lang.Error: Unresolved compilation problem: 
+	The method put(String, User) is undefined for the type RedisService
+
 	at com.example.demo.controller.UserController.insert(UserController.java:48)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
