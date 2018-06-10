@@ -22,4 +22,10 @@ public class ProductCategoryController {
 		boolean result = productCategoryMng.save(productCategoryDto);
 		return result;
 	}
+	@RequestMapping(value = "find.do",method=RequestMethod.POST)
+	@ApiOperation(value="查询类目")
+	public boolean find(ProductCategoryDto productCategoryDto) {
+		boolean result = productCategoryMng.save(productCategoryDto);
+		return result;
+	}
 }
