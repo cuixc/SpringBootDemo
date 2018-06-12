@@ -9,31 +9,34 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.example.demo.DTO.ProductCategoryDto;
 import com.example.demo.DTO.UserVo;
-import com.example.demo.dao.UserDao;
 import com.example.demo.entity.User;
+import com.example.demo.manger.ProductCategoryMng;
 import com.example.demo.redis.RedisService;
 import com.example.demo.service.UserService;
 
 import io.swagger.annotations.ApiOperation;
 
 
-@RestController
-@RequestMapping("/UserController")
+@Controller
+@RequestMapping("/user")
 public class UserController {
 	private static final Logger log = Logger.getLogger(UserController.class);// 日志文件
 	@Autowired
 	private UserService userService;
 	@Autowired
     private RedisService redisService;
+	@Autowired
+	private ProductCategoryMng productCategoryMng;
 	@ApiOperation(value="保存用户")
 	@RequestMapping(value = "save.do",method=RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> insert(UserVo userVo) {
@@ -71,5 +74,21 @@ public class UserController {
 	public Object pageFind(Page page) {
 		log.info("=============pageFind.do===============");
 		return userService.selectPage(page);
+	}
+	@RequestMapping("login.do")
+	public List<Map<String, Object>> login(){
+		
+		return null;
+	}
+	@RequestMapping("welcome.do")
+	public String welcome(Model model){
+		log.info("=======welcome.do==========");
+		List<ProductCategoryDto> productCategoryDtos = productCategoryMng.find(new ProductCategoryDto());
+		User user = new User();
+		user.setName("张三");
+		model.addAttribute("productCategoryDtos", productCategoryDtos);
+		model.addAttribute("currentUser", user);
+		log.info(productCategoryDtos.size());
+		return "welcome";
 	}
 }

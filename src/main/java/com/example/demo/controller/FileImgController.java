@@ -24,8 +24,7 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/FileImgController")
 public class FileImgController {
 	
-	@Value("${img.urlpath}")
-	private String imgPath;
+	private String imgPath = "/img";
 	private static final Logger log = Logger.getLogger(FileImgController.class);
 	//处理文件上传
 	@ApiOperation(value="处理图片上传")

@@ -4,8 +4,7 @@ spring:
     suffix: .html
   profiles:
     active: dev
-
-
+    
 #mybatis
 mybatis-plus:
   #mapper-locations: classpath*:/mapper/**Mapper.xml
