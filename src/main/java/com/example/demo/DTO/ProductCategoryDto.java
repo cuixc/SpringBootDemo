@@ -1,6 +1,5 @@
 package com.example.demo.DTO;
 
-import java.util.Date;
 
 public class ProductCategoryDto {
 	private Long id;
@@ -10,8 +9,8 @@ public class ProductCategoryDto {
     /** 类目编号. */
     private Integer categoryType;
 
-
-
+    /** 所属商户id. */
+    private String sellerId;
     
 	public Long getId() {
 		return id;
@@ -35,6 +34,20 @@ public class ProductCategoryDto {
 
 	public void setCategoryType(Integer categoryType) {
 		this.categoryType = categoryType;
+	}
+
+	public String getSellerId() {
+		return sellerId;
+	}
+
+	public void setSellerId(String sellerId) {
+		this.sellerId = sellerId;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductCategoryDto [id=" + id + ", categoryName=" + categoryName + ", categoryType=" + categoryType
+				+ ", sellerId=" + sellerId + "]";
 	}
 
 	
