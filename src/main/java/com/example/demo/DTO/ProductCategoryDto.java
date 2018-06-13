@@ -1,5 +1,6 @@
 package com.example.demo.DTO;
 
+import io.swagger.annotations.ApiParam;
 
 public class ProductCategoryDto {
 	private Long id;
@@ -10,6 +11,7 @@ public class ProductCategoryDto {
     private Integer categoryType;
 
     /** 所属商户id. */
+    @ApiParam(value="商户id必填")
     private String sellerId;
     
 	public Long getId() {

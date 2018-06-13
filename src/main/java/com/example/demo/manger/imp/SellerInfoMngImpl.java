@@ -1,10 +1,17 @@
 package com.example.demo.manger.imp;
 
 import java.util.Date;
+import java.util.List;
 
+import org.apache.ibatis.reflection.MetaObject;
+import org.apache.ibatis.reflection.factory.ObjectFactory;
+import org.apache.ibatis.reflection.property.PropertyTokenizer;
+import org.apache.ibatis.reflection.wrapper.BaseWrapper;
+import org.assertj.core.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.example.demo.DTO.SellerInfoDto;
 import com.example.demo.entity.SellerInfo;
 import com.example.demo.manger.SellerInfoMng;
@@ -66,6 +73,16 @@ public class SellerInfoMngImpl implements SellerInfoMng{
 			redisService.del(SELLERINFOKEY+sellerId);
 		}
 		return result;
+	}
+
+	@Override
+	public List<SellerInfoDto> findAll() {
+		List<SellerInfo> sellerInfos = sellerInfoSerive.selectList(new EntityWrapper<SellerInfo>().orderBy("update_time"));
+		List<SellerInfoDto> sellerInfoDtos = Lists.newArrayList();
+		if(sellerInfos != null && !sellerInfos.isEmpty()) {
+			sellerInfoDtos = BeanUtilsCopy.CopyList(sellerInfos, SellerInfoDto.class);
+		}
+		return sellerInfoDtos;
 	}
 
 }

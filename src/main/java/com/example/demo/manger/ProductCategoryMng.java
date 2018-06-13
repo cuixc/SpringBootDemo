@@ -11,4 +11,5 @@ public interface ProductCategoryMng {
 	ProductCategoryDto findById(Long categoryDtoId);
 	List<ProductCategoryDto> findAll();
 	boolean update(ProductCategoryDto productCategoryDto);
+	boolean delete(Long categoryDtoId);
 }
