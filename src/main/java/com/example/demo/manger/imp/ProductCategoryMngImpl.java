@@ -2,7 +2,6 @@ package com.example.demo.manger.imp;
 import java.util.Date;
 import java.util.List;
 
-import org.assertj.core.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +12,7 @@ import com.example.demo.manger.ProductCategoryMng;
 import com.example.demo.redis.RedisService;
 import com.example.demo.service.ProductCategoryService;
 import com.example.demo.util.BeanUtilsCopy;
+import com.google.common.collect.Lists;
 
 @Service
 public class ProductCategoryMngImpl implements ProductCategoryMng{

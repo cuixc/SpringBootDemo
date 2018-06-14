@@ -16,7 +16,7 @@ public class BeanUtilsCopy {
         try {
             BeanUtils.copyProperties(source, target);
         } catch (Exception e) {
-            log.error("apacheCopyProperties 异常：" + e);
+            log.error("CopyProperties 异常：" + e);
         }
 
     }

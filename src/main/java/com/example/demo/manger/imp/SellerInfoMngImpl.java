@@ -3,11 +3,7 @@ package com.example.demo.manger.imp;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.ibatis.reflection.MetaObject;
-import org.apache.ibatis.reflection.factory.ObjectFactory;
-import org.apache.ibatis.reflection.property.PropertyTokenizer;
-import org.apache.ibatis.reflection.wrapper.BaseWrapper;
-import org.assertj.core.util.Lists;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +14,11 @@ import com.example.demo.manger.SellerInfoMng;
 import com.example.demo.redis.RedisService;
 import com.example.demo.service.SellerInfoSerive;
 import com.example.demo.util.BeanUtilsCopy;
+import com.google.common.collect.Lists;
 @Service
 public class SellerInfoMngImpl implements SellerInfoMng{
+	private static final Logger log = Logger.getLogger(SellerInfoMngImpl.class);
+	
 	@Autowired
 	private SellerInfoSerive sellerInfoSerive;
 	@Autowired
@@ -55,7 +54,10 @@ public class SellerInfoMngImpl implements SellerInfoMng{
 	@Override
 	public SellerInfoDto find(Long sellerId) {
 		SellerInfoDto sellerInfoDto = (SellerInfoDto) redisService.get(SELLERINFOKEY+sellerId);
+		log.info("======find======");
 		if(sellerInfoDto == null) {
+			sellerInfoDto = new SellerInfoDto();
+			log.info("sellerInfoDto is null");
 			SellerInfo sellerInfo = new SellerInfo();
 			sellerInfo = sellerInfoSerive.selectById(sellerId);
 			if(sellerInfo != null) {
@@ -82,6 +84,20 @@ public class SellerInfoMngImpl implements SellerInfoMng{
 		if(sellerInfos != null && !sellerInfos.isEmpty()) {
 			sellerInfoDtos = BeanUtilsCopy.CopyList(sellerInfos, SellerInfoDto.class);
 		}
+		return sellerInfoDtos;
+	}
+
+	@Override
+	public List<SellerInfoDto> find(SellerInfoDto sellerInfoDto) {
+		if(sellerInfoDto == null) {
+			return null;
+		}
+		SellerInfo sellerInfo = new SellerInfo();
+		BeanUtilsCopy.copyProperties(sellerInfoDto, sellerInfo);
+		List<SellerInfo> sellerInfos = sellerInfoSerive.selectList(new EntityWrapper<SellerInfo>(sellerInfo)
+												.orderBy("update_time"));
+		if(sellerInfos == null || sellerInfos.size() == 0) return null;
+		List<SellerInfoDto> sellerInfoDtos = BeanUtilsCopy.CopyList(sellerInfos,SellerInfoDto.class);
 		return sellerInfoDtos;
 	}
 

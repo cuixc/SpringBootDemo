@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Resource;
 
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
