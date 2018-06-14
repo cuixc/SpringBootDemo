@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.DTO.SellerInfoDto;
+import com.example.demo.constant.Constant;
 import com.example.demo.util.ErrorEnum;
 import com.example.demo.util.R;
 
@@ -22,10 +23,14 @@ public class LoginController {
 	@ApiOperation(value="用户登入验证")
 	public R authLogin(SellerInfoDto seller) {
 		log.info("============authLogin============");
-		UsernamePasswordToken token = new UsernamePasswordToken(seller.getUsername(), seller.getPassword());
+		UsernamePasswordToken token = new UsernamePasswordToken(seller.getUsername(), seller.getPassword(),true);
 		try {
 			SecurityUtils.getSubject().login(token);
-            return R.ok();
+			//拿到当前登入商户
+			SellerInfoDto sellerInfoDto = (SellerInfoDto) SecurityUtils.getSubject().getSession().getAttribute(Constant.USER_INFO);
+            R r = new R();
+            r.put("seller", sellerInfoDto);
+			return r;
         } catch (AuthenticationException e) {
            return R.error(ErrorEnum.E_202.getErrorCode(), ErrorEnum.E_202.getErrorMsg());
         }
