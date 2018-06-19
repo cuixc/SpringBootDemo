@@ -1,4 +1,4 @@
-package com.example.demo.DTO;
+package com.example.demo.dao;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.example.demo.entity.ProductInfo;

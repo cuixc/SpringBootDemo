@@ -1,6 +1,7 @@
 package com.example.demo.util;
 
-import java.util.ArrayList;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -22,7 +23,7 @@ public class BeanUtilsCopy {
 
     }
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static <T> List<T> CopyList(Collection sourceList, 
 			 Class<T> destinationClass)  {  
 		DozerBeanMapper dozer=new DozerBeanMapper();
@@ -34,41 +35,82 @@ public class BeanUtilsCopy {
 		}  
 		return destinationList;  
 	} 
-	@SuppressWarnings("unchecked")
-    public static <T, D> T populateTbyDBySpring(D sourceObj, Class<T> clazz)
-      {
-        if (sourceObj == null) {
-          return null;
-        }
-        Object t = null;
-        try {
-          t = clazz.newInstance();
-        } catch (IllegalAccessException e) {
-            log.error("自动转换失败", e);
-        } catch (InstantiationException exx) {
-            log.error("自动转换失败", exx);
-        }
-        org.springframework.beans.BeanUtils.copyProperties(sourceObj, t);
-
-        return (T) t;
-
-      }
-
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-    public static <T, D> List<T> populateTListbyDListBySpring(List<D> sourceObjs, Class<T> clazz){
-        if (sourceObjs == null) {
-          return null;
-        }
-        int len = sourceObjs.size();
-        List ts = new ArrayList(len);
-        Object t = null;
-        for (int i = 0; i < len; i++) {
-          Object d = sourceObjs.get(i);
-          t = populateTbyDBySpring(d, clazz);
-          ts.add(t);
-        }
-        return ts;
-      }
-
+	/**
+	   * 拷贝source不为空的属性到target,更新常用
+	   * @param sour
+	   * @param obje
+	   * @return
+	   */
+	  public static void copyNotNull(Object source, Object target) {
+		    Field[] fields = source.getClass().getDeclaredFields();
+		    for (int i = 0, j = fields.length; i < j; i++) {
+		      String propertyName = fields[i].getName();
+		      Object propertyValue = getProperty(source, propertyName);
+		      if(propertyValue!=null) {
+		    	  setProperty(target, propertyName, propertyValue);
+		      }
+		    }
+	  }
+	  
+	  /**
+	   * 给bean赋值
+	   * 
+	   * @param bean
+	   * @param propertyName
+	   * @param value
+	   * @return
+	   */
+	  @SuppressWarnings({ "rawtypes", "unchecked" })
+	private static Object setProperty(Object bean, String propertyName, Object value) {
+	    Class clazz = bean.getClass();
+	    try {
+	      Field field = clazz.getDeclaredField(propertyName);
+	      Method method =
+	          clazz.getDeclaredMethod(getSetterName(field.getName()), new Class[] {field.getType()});
+	      return method.invoke(bean, new Object[] {value});
+	    } catch (Exception e) {
+	    }
+	    return null;
+	  }
+	  /**
+	   * 得到值
+	   * 
+	   * @param bean
+	   * @param propertyName
+	   * @return
+	   */
+	  @SuppressWarnings({ "rawtypes", "unchecked" })
+	private static Object getProperty(Object bean, String propertyName) {
+	    Class clazz = bean.getClass();
+	    try {
+	      Field field = clazz.getDeclaredField(propertyName);
+	      Method method = clazz.getDeclaredMethod(getGetterName(field.getName()), new Class[] {});
+	      return method.invoke(bean, new Object[] {});
+	    } catch (Exception e) {
+	    }
+	    return null;
+	  }
+	  
+	  /**
+	   * 根据变量名得到get方法
+	   * 
+	   * @param propertyName
+	   * @return
+	   */
+	  private static String getGetterName(String propertyName) {
+	    String method = "get" + propertyName.substring(0, 1).toUpperCase() + propertyName.substring(1);
+	    return method;
+	  }
+	  
+	  /**
+	   * 得到setter方法
+	   * 
+	   * @param propertyName 变量名
+	   * @return
+	   */
+	  private static String getSetterName(String propertyName) {
+	    String method = "set" + propertyName.substring(0, 1).toUpperCase() + propertyName.substring(1);
+	    return method;
+	  }
 
 }

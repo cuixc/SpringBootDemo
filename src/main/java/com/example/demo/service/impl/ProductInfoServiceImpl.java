@@ -1,9 +1,12 @@
 package com.example.demo.service.impl;
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.example.demo.DTO.ProductInfoDao;
-import com.example.demo.entity.ProductInfo;
+import org.springframework.stereotype.Service;
 
-public class ProductInfoServiceImpl extends ServiceImpl<ProductInfoDao, ProductInfo> {
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.example.demo.dao.ProductInfoDao;
+import com.example.demo.entity.ProductInfo;
+import com.example.demo.service.ProductInfoService;
+@Service
+public class ProductInfoServiceImpl extends ServiceImpl<ProductInfoDao, ProductInfo> implements ProductInfoService {
 
 }

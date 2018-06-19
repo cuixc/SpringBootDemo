@@ -20,6 +20,13 @@ import com.example.demo.DTO.SellerInfoDto;
 import com.example.demo.constant.Constant;
 import com.example.demo.manger.SellerInfoMng;
 
+/**  
+* @ClassName: UserRealm  
+* @Description: TODO shiro检验规则
+* @author cuixc  
+* @date 2018年6月19日  
+*    
+*/  
 public class UserRealm extends AuthorizingRealm {
 	private static final Logger log = LoggerFactory.getLogger(UserRealm.class);
 	@Autowired

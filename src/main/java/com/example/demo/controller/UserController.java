@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+/*package com.example.demo.controller;
 
 
 import java.util.HashMap;
@@ -93,3 +93,4 @@ public class UserController {
 		return "welcome";
 	}
 }
+*/

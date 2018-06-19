@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.example.demo.DTO.ProductInfoDto;
@@ -13,7 +14,7 @@ import com.example.demo.redis.RedisService;
 import com.example.demo.service.ProductInfoService;
 import com.example.demo.util.BeanUtilsCopy;
 import com.google.common.collect.Lists;
-
+@Service
 public class ProductInfoMngImpl implements ProductInfoMng {
 	@Autowired
 	private ProductInfoService productInfoService;
