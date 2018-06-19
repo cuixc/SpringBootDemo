@@ -1,9 +1,10 @@
 package com.example.demo.config.shiro;
 
-import org.apache.log4j.Logger;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import javax.servlet.Filter;
@@ -11,7 +12,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 @Configuration
 public class ShiroConfiguration {
-	private static final Logger log = Logger.getLogger(ShiroConfiguration.class);
+	private static final Logger log = LoggerFactory.getLogger(ShiroConfiguration.class);
 	/**
      * Shiro的Web过滤器Factory 命名:shiroFilter
      */

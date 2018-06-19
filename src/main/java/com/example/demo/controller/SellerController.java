@@ -2,7 +2,8 @@ package com.example.demo.controller;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +21,7 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/Seller")
 @Api(value="商户处理")
 public class SellerController {
-	private static final Logger log = Logger.getLogger(SellerController.class);
+	private static final Logger log = LoggerFactory.getLogger(SellerController.class);
 	@Autowired
 	private SellerInfoMng sellerInfoMng;
 	

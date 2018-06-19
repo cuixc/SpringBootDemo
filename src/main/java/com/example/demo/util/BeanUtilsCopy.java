@@ -5,13 +5,14 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import org.springframework.beans.BeanUtils;
-import org.apache.log4j.Logger;
 import org.dozer.DozerBeanMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
 
 public class BeanUtilsCopy {
-	private static Logger log = Logger.getLogger("BeanUtils");
+	private static Logger log = LoggerFactory.getLogger(BeanUtilsCopy.class);
 	public static void copyProperties(Object source, Object target) {
         try {
             BeanUtils.copyProperties(source, target);

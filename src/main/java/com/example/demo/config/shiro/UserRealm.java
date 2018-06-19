@@ -2,7 +2,6 @@ package com.example.demo.config.shiro;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -13,6 +12,8 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.demo.DTO.SellerInfoDto;
@@ -20,7 +21,7 @@ import com.example.demo.constant.Constant;
 import com.example.demo.manger.SellerInfoMng;
 
 public class UserRealm extends AuthorizingRealm {
-	private static final Logger log = Logger.getLogger(UserRealm.class);
+	private static final Logger log = LoggerFactory.getLogger(UserRealm.class);
 	@Autowired
 	private SellerInfoMng sellerInfoMng;
 	@Override

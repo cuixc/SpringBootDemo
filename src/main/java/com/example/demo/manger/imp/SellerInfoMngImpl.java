@@ -3,7 +3,8 @@ package com.example.demo.manger.imp;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ import com.example.demo.util.BeanUtilsCopy;
 import com.google.common.collect.Lists;
 @Service
 public class SellerInfoMngImpl implements SellerInfoMng{
-	private static final Logger log = Logger.getLogger(SellerInfoMngImpl.class);
+	private static final Logger log = LoggerFactory.getLogger(SellerInfoMngImpl.class);
 	
 	@Autowired
 	private SellerInfoSerive sellerInfoSerive;

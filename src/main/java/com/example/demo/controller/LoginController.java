@@ -1,9 +1,10 @@
 package com.example.demo.controller;
 
-import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,7 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping(value="/login")
 public class LoginController {	
-	private static final Logger log = Logger.getLogger(LoginController.class);
+	private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 	@RequestMapping(value="/login.do",method=RequestMethod.POST)
 	@ApiOperation(value="用户登入验证")
 	public R authLogin(SellerInfoDto seller) {

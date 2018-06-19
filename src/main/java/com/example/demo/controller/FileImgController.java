@@ -4,9 +4,10 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.log4j.Logger;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +26,7 @@ import io.swagger.annotations.ApiOperation;
 public class FileImgController {
 	
 	private String imgPath = "/img";
-	private static final Logger log = Logger.getLogger(FileImgController.class);
+	private static final Logger log = LoggerFactory.getLogger(FileImgController.class);
 	//处理文件上传
 	@ApiOperation(value="处理图片上传")
     @RequestMapping(value="/uploadimg.do", method = RequestMethod.POST)

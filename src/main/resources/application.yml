@@ -38,7 +38,6 @@ mybatis-plus:
   
 #日志配置
 logging:
-  file: logs/demo.log
   level:
-    demo: info
+    root: INFO
     

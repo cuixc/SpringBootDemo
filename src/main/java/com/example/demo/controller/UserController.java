@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ import io.swagger.annotations.ApiOperation;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-	private static final Logger log = Logger.getLogger(UserController.class);// 日志文件
+	private static final Logger log = LoggerFactory.getLogger(UserController.class);// 日志文件
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -88,7 +89,7 @@ public class UserController {
 		user.setName("张三");
 		model.addAttribute("productCategoryDtos", productCategoryDtos);
 		model.addAttribute("currentUser", user);
-		log.info(productCategoryDtos.size());
+		log.info(productCategoryDtos.size()+"");
 		return "welcome";
 	}
 }
